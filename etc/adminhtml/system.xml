@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="productrules" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+            <class>separator-top</class>
+            <label>Product Rules</label>
+            <tab>catalog</tab>
+            <resource>Sga_ProductRules::config_rule</resource>
+            <group id="attributes" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Attributes</label>
+                <field id="condition" translate="label" type="multiselect" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>For Condition</label>
+                    <source_model>Sga\ProductRules\Model\System\Config\Source\Product\Attributes</source_model>
+                </field>
+                <field id="action" translate="label" type="multiselect" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>For Action</label>
+                    <source_model>Sga\ProductRules\Model\System\Config\Source\Product\Attributes</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

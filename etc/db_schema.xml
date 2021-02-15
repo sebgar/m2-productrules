@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="sga_productrules_rule" resource="default" engine="innodb" comment="SEGMENTATION rule">
+        <column xsi:type="int" name="rule_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Id"/>
+        <column xsi:type="varchar" name="code" length="255" nullable="false" default="" comment="Code" />
+        <column xsi:type="tinyint" name="is_active" unsigned="true" nullable="false" identity="false" default="0" comment="Active" />
+        <column xsi:type="varchar" name="title" length="255" nullable="false" default="" comment="Title" />
+        <column xsi:type="text" name="description" nullable="true" comment="Description" />
+        <column xsi:type="varchar" name="memory_limit" length="255" nullable="true" default="" comment="Memory Limit" />
+        <column xsi:type="varchar" name="store_ids" length="255" nullable="false" default="" comment="Store Ids" />
+        <column xsi:type="int" name="product_limit" padding="10" unsigned="true" nullable="false" identity="false" default="0" comment="Product Limit" />
+        <column xsi:type="text" name="conditions_serialized" nullable="false" comment="Conditions" />
+        <column xsi:type="text" name="actions_serialized" nullable="false" comment="Actions" />
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At" />
+        <column xsi:type="timestamp" name="updated_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Updated At" />
+        <column xsi:type="timestamp" name="started_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Started At" />
+        <column xsi:type="timestamp" name="finished_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Finished At" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="rule_id"/>
+        </constraint>
+    </table>
+</schema>

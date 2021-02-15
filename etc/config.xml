@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <productrules>
+            <conditions>
+                <combine>
+                    <object>Sga\ProductRules\Model\Rule\Condition\Combine</object>
+                    <label>Conditions combination</label>
+                </combine>
+                <product_attributes>
+                    <title>Product Attributes</title>
+                    <attributes>
+                        <class>Sga\ProductRules\Model\Rule\Condition\Product</class>
+                        <method>getConditionsForCombine</method>
+                    </attributes>
+                </product_attributes>
+                <product_functions>
+                    <title>Product Functions</title>
+                    <in_website>
+                        <object>Sga\ProductRules\Model\Rule\Condition\Product\InWebsite</object>
+                        <label>In Website</label>
+                    </in_website>
+                    <is_new>
+                        <object>Sga\ProductRules\Model\Rule\Condition\Product\IsNew</object>
+                        <label>New</label>
+                    </is_new>
+                    <created_from>
+                        <object>Sga\ProductRules\Model\Rule\Condition\Product\CreatedFrom</object>
+                        <label>Create from X hour/day</label>
+                    </created_from>
+                    <has_price_promo>
+                        <object>Sga\ProductRules\Model\Rule\Condition\Product\HasPricePromo</object>
+                        <label>Has Price Promo</label>
+                    </has_price_promo>
+                    <has_rule_promo>
+                        <object>Sga\ProductRules\Model\Rule\Condition\Product\HasRulePromo</object>
+                        <label>Has Rule Promo</label>
+                    </has_rule_promo>
+                    <best_seller>
+                        <object>Sga\ProductRules\Model\Rule\Condition\Product\BestSeller</object>
+                        <label>Best Seller</label>
+                    </best_seller>
+                </product_functions>
+            </conditions>
+            <actions>
+                <product_category>
+                    <object>Sga\ProductRules\Model\Rule\Action\Product\AddCategory</object>
+                    <label>Add product(s) into categories</label>
+                </product_category>
+                <product_category_remove>
+                    <object>Sga\ProductRules\Model\Rule\Action\Product\RemoveCategory</object>
+                    <label>Remove product(s) from categories</label>
+                </product_category_remove>
+                <product_affect_position>
+                    <object>Sga\ProductRules\Model\Rule\Action\Product\AffectPosition</object>
+                    <label>Affect product(s) position</label>
+                </product_affect_position>
+                <product_affect_number>
+                    <object>Sga\ProductRules\Model\Rule\Action\Product\AffectNumber</object>
+                    <label>Affect product(s) number</label>
+                </product_affect_number>
+                <product_attributes>
+                    <title>Product Attributes</title>
+                    <attributes>
+                        <class>Sga\ProductRules\Model\Rule\Action\Product\Attribute</class>
+                        <method>getActionsForCollection</method>
+                    </attributes>
+                </product_attributes>
+                <product_attributes_multi>
+                    <title>Product Attributes Multi Values</title>
+                    <attributes_multi>
+                        <class>Sga\ProductRules\Model\Rule\Action\Product\AttributeMulti</class>
+                        <method>getActionsForCollection</method>
+                    </attributes_multi>
+                </product_attributes_multi>
+            </actions>
+        </productrules>
+    </default>
+</config>

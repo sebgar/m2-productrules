@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">productrules_rule_form.productrules_rule_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Sga\ProductRules\Block\Adminhtml\Rule\Edit\SaveButton"/>
+            <button name="delete" class="Sga\ProductRules\Block\Adminhtml\Rule\Edit\DeleteButton"/>
+            <button name="execute" class="Sga\ProductRules\Block\Adminhtml\Rule\Edit\ExecuteButton"/>
+            <button name="back" class="Sga\ProductRules\Block\Adminhtml\Rule\Edit\BackButton"/>
+        </buttons>
+        <namespace>productrules_rule_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>productrules_rule_form.productrules_rule_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="productrules_rule_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="productrules/rule/save"/>
+        </settings>
+        <dataProvider class="Sga\ProductRules\Model\Rule\DataProvider" name="productrules_rule_form_data_source">
+            <settings>
+                <requestFieldName>rule_id</requestFieldName>
+                <primaryFieldName>rule_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="general">
+        <settings>
+            <label>General</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+        </settings>
+
+        <field name="rule_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">rule</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>rule_id</dataScope>
+            </settings>
+        </field>
+
+        <field name="code" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">rule</item>
+                </item>
+            </argument>
+            <settings>
+                <validation><rule name="required-entry" xsi:type="boolean">true</rule></validation>
+                <dataType>text</dataType>
+                <label translate="true">Code</label>
+                <dataScope>code</dataScope>
+            </settings>
+        </field>
+
+        <field name="is_active" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Active</label>
+                <dataScope>is_active</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+
+        <field name="title" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">rule</item>
+                </item>
+            </argument>
+            <settings>
+                <validation><rule name="required-entry" xsi:type="boolean">true</rule></validation>
+                <dataType>text</dataType>
+                <label translate="true">Title</label>
+                <dataScope>title</dataScope>
+            </settings>
+        </field>
+
+        <field name="description" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">rule</item>
+                </item>
+            </argument>
+            <settings>
+
+                <dataType>text</dataType>
+                <label translate="true">Description</label>
+                <dataScope>description</dataScope>
+            </settings>
+        </field>
+
+        <field name="memory_limit" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="notice" xsi:type="string" translate="true">To increase memory limit for processing this rule. Exemple : 512M, 1G or -1 for disable limit</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Memory Limit</label>
+                <dataScope>memory_limit</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+
+    <fieldset name="Stores">
+        <settings>
+            <label>Stores</label>
+            <collapsible>true</collapsible>
+            <opened>false</opened>
+        </settings>
+
+        <field name="store_ids">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Sga\ProductRules\Model\Source\Rule\Storeids</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Store Ids</item>
+                    <item name="componentType" xsi:type="string">field</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                    <item name="elementTmpl" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                    <item name="dataScope" xsi:type="string">store_ids</item>
+                    <item name="filterOptions" xsi:type="boolean">true</item>
+                    <item name="showCheckbox" xsi:type="boolean">false</item>
+                    <item name="disableLabel" xsi:type="boolean">true</item>
+                    <item name="multiple" xsi:type="boolean">true</item>
+                    <item name="levelsVisibility" xsi:type="number">1</item>
+                    <item name="listens" xsi:type="array">
+                        <item name="${ $.namespace }.${ $.namespace }:responseData" xsi:type="string">setParsed</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+
+    <fieldset name="Conditions">
+        <settings>
+            <label>Conditions</label>
+            <collapsible>true</collapsible>
+            <opened>false</opened>
+        </settings>
+
+        <field name="product_limit" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="notice" xsi:type="string" translate="true">0 for no limit</item>
+                </item>
+            </argument>
+            <settings>
+                <validation><rule name="required-entry" xsi:type="boolean">true</rule></validation>
+                <dataType>text</dataType>
+                <label translate="true">Product Limit</label>
+                <dataScope>product_limit</dataScope>
+            </settings>
+        </field>
+
+        <container name="conditions" sortOrder="10">
+            <htmlContent name="html_content">
+                <block name="conditions_field" class="Sga\ProductRules\Block\Adminhtml\Rule\Edit\Tab\Conditions" />
+            </htmlContent>
+        </container>
+    </fieldset>
+
+    <fieldset name="Actions">
+        <settings>
+            <label>Actions</label>
+            <collapsible>true</collapsible>
+            <opened>false</opened>
+        </settings>
+
+        <container name="actions" sortOrder="10">
+            <htmlContent name="html_content">
+                <block name="actions_field" class="Sga\ProductRules\Block\Adminhtml\Rule\Edit\Tab\Actions" />
+            </htmlContent>
+        </container>
+    </fieldset>
+</form>
