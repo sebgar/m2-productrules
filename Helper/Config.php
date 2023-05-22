@@ -24,7 +24,7 @@ class Config extends AbstractHelper
 
     public function getAttributesCondition($store = null)
     {
-        return explode(',', $this->_scopeConfig->getValue(
+        return explode(',', (string)$this->_scopeConfig->getValue(
             self::XML_PATH_ATTRIBUTES_CONDITION,
             ScopeInterface::SCOPE_STORE,
             $store
@@ -33,7 +33,7 @@ class Config extends AbstractHelper
 
     public function getAttributesAction($store = null)
     {
-        return explode(',', $this->_scopeConfig->getValue(
+        return explode(',', (string)$this->_scopeConfig->getValue(
             self::XML_PATH_ATTRIBUTES_ACTION,
             ScopeInterface::SCOPE_STORE,
             $store

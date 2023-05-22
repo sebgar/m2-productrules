@@ -1,6 +1,7 @@
 <?php
 namespace Sga\ProductRules\Model\Rule;
 
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Ui\DataProvider\Modifier\PoolInterface;
 use Sga\ProductRules\Model\ResourceModel\Rule\CollectionFactory;
@@ -23,12 +24,12 @@ class DataProvider extends \Magento\Ui\DataProvider\ModifierPoolDataProvider
         DataPersistorInterface $dataPersistor,
         array $meta = [],
         array $data = [],
-        PoolInterface $pool
+        PoolInterface $pool = null
     ) {
         $this->collection = $collectionFactory->create();
         $this->dataPersistor = $dataPersistor;
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data, $pool);
-        $this->pool = $pool;
+        $this->pool = $pool ?: ObjectManager::getInstance()->get(PoolInterface::class);
     }
 
     public function getData()
